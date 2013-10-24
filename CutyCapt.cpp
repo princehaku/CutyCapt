@@ -392,6 +392,7 @@ CaptHelp(void) {
     " -----------------------------------------------------------------------------\n"
 #endif
     " http://cutycapt.sf.net - (c) 2003-2013 Bjoern Hoehrmann - bjoern@hoehrmann.de\n"
+    " updated by princehaku http://3haku.net\n"
     "");
 }
 
@@ -427,6 +428,7 @@ main(int argc, char *argv[]) {
   QByteArray body;
   QNetworkRequest req;
   QNetworkAccessManager manager;
+
 
   // Parse command line parameters
   for (int ax = 1; ax < argc; ++ax) {
@@ -632,6 +634,8 @@ main(int argc, char *argv[]) {
       return EXIT_FAILURE;
   }
 
+  // set localstorageenabel
+  page.setAttribute(QWebSettings::LocalStorageEnabled, "true");
   // This used to use QUrl(argUrl) but that escapes %hh sequences
   // even though it should not, as URLs can assumed to be escaped.
   req.setUrl( QUrl::fromEncoded(argUrl) );
